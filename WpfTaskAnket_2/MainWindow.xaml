@@ -33,20 +33,20 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0"  Grid.Column="0" Content="Ad" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" />
-                <TextBox Grid.Row="0"  Grid.Column="1" Margin="10" ></TextBox>
+                <TextBox Name="Nametxt" Grid.Row="0"  Grid.Column="1" Margin="10" Text="{Binding Person.Name}" ></TextBox>
                 <Label Grid.Row="1"  Grid.Column="0" Content="Soyad" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" />
-                <TextBox Grid.Row="1"  Grid.Column="1" Margin="10" ></TextBox>
+                <TextBox Name="Surnametxt" Grid.Row="1"  Grid.Column="1" Margin="10" Text="{Binding Person.Surname}" ></TextBox>
                 <Label Grid.Row="2"  Grid.Column="0" Content="Email" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" />
-                <TextBox Grid.Row="2"  Grid.Column="1" Margin="10" ></TextBox>
+                <TextBox Name="Emailtxt" Grid.Row="2"  Grid.Column="1" Margin="10" Text="{Binding Person.Email}" ></TextBox>
                 <Label Grid.Row="3"  Grid.Column="0" Content="Telefon" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" />
-                <TextBox Grid.Row="3"  Grid.Column="1" Margin="10" ></TextBox>
+                <TextBox Name="Phonetxt" Grid.Row="3"  Grid.Column="1" Margin="10"  Text="{Binding Person.Phone}"></TextBox>
                 <Label Grid.Row="4"  Grid.Column="0" Content="Dogum" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" />
-                <TextBox Grid.Row="4"  Grid.Column="1" Margin="10" ></TextBox>
+                <DatePicker Name="Birthday" Grid.Row="4"  Grid.Column="1" SelectedDate="{Binding Person.Birthday}"/>
 
-                
-                <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Dəyiş" HorizontalAlignment="Right" Padding="27,5" Margin="20,10"/>
+
+                <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Dəyiş" IsEnabled="False" HorizontalAlignment="Right" Padding="27,5" Margin="20,10"/>
                
-                <Button Grid.Row="6" Grid.ColumnSpan="2" Content="Əlavə et" HorizontalAlignment="Right" Padding="20,5" Margin="20,10"/>
+                <Button Grid.Row="6" Grid.ColumnSpan="2" Content="Əlavə et" HorizontalAlignment="Right" Padding="20,5" Margin="20,10" Click="Button_Click_Add"/>
 
 
                 
@@ -61,24 +61,25 @@
             
         </GroupBox>
 
-        <Grid Grid.Row="0" Grid.Column="1" Margin="10">
+        <Grid Grid.Row="0" Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition Height="0.5*" ></RowDefinition>
                 <RowDefinition Height="0.5*" ></RowDefinition>
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" Margin="15" ></ListBox>
-            <TextBox  Name ="txtBox" Grid.Row="1" Margin="10,10"  ></TextBox>
+            <ListBox BorderBrush="Chocolate" BorderThickness="10" Margin="10" Name="ListBox1" Grid.Row="0"  ItemsSource="{Binding People,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}" 
+                     SelectionChanged="ListBox1_SelectionChanged"  ></ListBox>
+            <TextBox  Name ="txtBox" Grid.Row="1" Margin="10,10" Text="{Binding FilePath}" ></TextBox>
             <Grid Grid.Row="2" Margin="10,10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="5" >Load</Button>
-                <Button Grid.Column="1" Margin="5">Save</Button>
+                <Button Grid.Column="0" Margin="5" Click="Button_Click_Load" >Load</Button>
+                <Button Grid.Column="1" Margin="5" Click="Button_Click_Save">Save</Button>
             </Grid>
             
-            <Button></Button>
+            
         </Grid>
        
     </Grid>
